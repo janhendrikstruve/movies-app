@@ -5,26 +5,47 @@ import Title from './components/Title/Title';
 import Card from './components/Card/Card';
 
 function App(): JSX.Element {
-  const [Cards, setCards] = useState([
+  const [cards, setCards] = useState([
     {
       title: 'Star Wars: A new Hope',
       description: 'Pew pew in space',
-      prio: 5,
       isWatched: true,
+      priority: 5,
     },
   ]);
 
+  console.log(cards);
+  function handleSubmit(card: {
+    title: string;
+    description: string;
+    isWatched: boolean;
+    priority: number;
+  }) {
+    setCards([
+      ...cards,
+      {
+        title: card.title,
+        description: card.description,
+        isWatched: card.isWatched,
+        priority: card.priority,
+      },
+    ]);
+  }
+
   return (
     <div className={styles.appContainer}>
-      <Title />
-      <Form />
+      <Form onSubmit={handleSubmit} />
       <ul>
-        <Card
-          title={entry.title}
-          description={entry.description}
-          prio={entry.prio}
-          isWatched={entry.isWatched}
-        />
+        {cards.map((entry) => {
+          return (
+            <Card
+              title={entry.title}
+              description={entry.description}
+              isWatched={entry.isWatched}
+              priority={entry.priority}
+            />
+          );
+        })}
       </ul>
     </div>
   );

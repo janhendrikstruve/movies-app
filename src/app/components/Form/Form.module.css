@@ -1,8 +1,55 @@
 .form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 1fr 1fr;
 }
 
 .sort_and_submit {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.lable_description {
+  color: #04d9ff;
+  text-shadow: 2px 1px 2px #04d9ff65;
+}
+
+.lable_title {
+  color: #04d9ff;
+  text-shadow: 2px 1px 2px #04d9ff65;
+  align-self: center;
+}
+
+.lable_priority {
+  color: #04d9ff;
+  text-shadow: 2px 1px 2px #04d9ff65;
+  align-self: center;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 50px;
+  border-bottom: 5px solid steelblue;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: linear-gradient(#5fddff, #53addf);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px grey;
+  transition: 150ms ease;
+  font-weight: bold;
+}
+.button:hover {
+  color: gold;
+  box-shadow: 0 4px 14px gold;
+}
+.button:active {
+  border: none;
+  border-bottom: 2px solid steelblue;
+  box-shadow: 0 1px 5px grey;
+  background: linear-gradient(#53afff, #5fcdff);
+  color: #fff;
 }
