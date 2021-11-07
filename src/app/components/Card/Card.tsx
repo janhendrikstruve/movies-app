@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Card.module.css';
 
 type cardProps = {
@@ -9,6 +9,7 @@ type cardProps = {
 };
 
 function Card({ title, description, priority }: cardProps): JSX.Element {
+  const [prio, setPrio] = useState(priority);
   return (
     <section className={styles.card}>
       <h2 className={styles.title_Element}>{title}</h2>
@@ -17,10 +18,10 @@ function Card({ title, description, priority }: cardProps): JSX.Element {
       Movie Rating &nbsp;
       <input
         type="number"
-        value={priority}
+        value={prio}
         min={1}
         max={5}
-        onChange={(event) => (priority = event.target.value)}
+        onChange={(event) => setPrio(parseInt(event.target.value))}
       />
       &nbsp; &nbsp; &nbsp;
       <label className={styles.lable_checkbox} />
@@ -33,5 +34,4 @@ function Card({ title, description, priority }: cardProps): JSX.Element {
     </section>
   );
 }
-
 export default Card;
