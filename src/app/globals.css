@@ -1,5 +1,7 @@
 body {
   height: 100vh;
+  overflow: auto;
+  background-image: url('./images/purpleHaze.png');
   background-color: #0f0e17;
   background-size: cover;
   margin: 0;
