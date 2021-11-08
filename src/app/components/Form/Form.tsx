@@ -27,7 +27,7 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
 
   return (
     <form action="" className={styles.form} onSubmit={handleSubmit}>
-      <label className={styles.lable_title}>
+      <label className={styles.label_title}>
         Title
         <br />
         <input
@@ -39,9 +39,8 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
           onChange={(event) => setTitle(event.target.value)}
         />
       </label>
-      <label className={styles.lable_description}>
+      <label className={styles.label_description}>
         Description
-        <br />
         <br />
         <textarea
           rows={5}
@@ -52,21 +51,19 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
           onChange={(event) => setDescription(event.target.value)}
         ></textarea>
       </label>
-      <div className={styles.sort_and_submit}>
-        <label className={styles.lable_priority}>
-          Movie Rating
-          <input
-            type="number"
-            defaultValue={1}
-            min={1}
-            max={5}
-            onChange={(event) => setPriority(event.target.value)}
-          />
-        </label>
+      <label className={styles.label_priority}>
+        Movie Rating
         <br />
-        <br />
-        <input type="submit" value="Submit" className={styles.button} />
-      </div>
+        <input
+          className={styles.number}
+          type="number"
+          defaultValue={1}
+          min={1}
+          max={5}
+          onChange={(event) => setPriority(event.target.value)}
+        />
+      </label>
+      <input type="submit" value="Submit" className={styles.button} />
     </form>
   );
 }

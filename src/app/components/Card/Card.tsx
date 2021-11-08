@@ -8,7 +8,12 @@ type cardProps = {
   priority: number;
 };
 
-function Card({ title, description, priority }: cardProps): JSX.Element {
+function Card({
+  title,
+  description,
+  priority,
+  isWatched,
+}: cardProps): JSX.Element {
   const [prio, setPrio] = useState(priority);
   return (
     <section className={styles.card}>
@@ -27,6 +32,7 @@ function Card({ title, description, priority }: cardProps): JSX.Element {
       <label className={styles.lable_checkbox} />
       Movie Watched &nbsp;
       <input
+        checked={isWatched}
         type="checkbox"
         className={styles.checkbox_button}
         defaultValue=""
