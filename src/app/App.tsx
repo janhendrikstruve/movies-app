@@ -1,55 +1,53 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import styles from './App.module.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Form from './components/Form/Form';
+import Title from './components/Title/Title';
+import Card from './components/Card/Card';
 
 function App(): JSX.Element {
-  const [count, setCount] = useState<number>(0);
+  const [cards, setCards] = useState([
+    {
+      title: 'Star Wars: A new Hope',
+      description: 'Pew pew in space',
+      isWatched: true,
+      priority: 5,
+    },
+  ]);
+
+  console.log(cards);
+  function handleSubmit(card: {
+    title: string;
+    description: string;
+    isWatched: boolean;
+    priority: number;
+  }) {
+    setCards([
+      ...cards,
+      {
+        title: card.title,
+        description: card.description,
+        isWatched: card.isWatched,
+        priority: card.priority,
+      },
+    ]);
+  }
 
   return (
-    <BrowserRouter>
-      <div className={styles.App}>
-        <header className={styles['App-header']}>
-          <img src={logo} className={styles['App-logo']} alt="logo" />
-          <p>Hello Vite + React!</p>
-          <p>
-            <button onClick={() => setCount((count) => count + 1)}>
-              count is: {count}
-            </button>
-          </p>
-          <p>
-            Edit <code>App.tsx</code> and save to test HMR updates.
-          </p>
-          <p>
-            <a
-              className={styles['App-link']}
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            {' | '}
-            <a
-              className={styles['App-link']}
-              href="https://vitejs.dev/guide/features.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Vite Docs
-            </a>
-          </p>
-          <Switch>
-            <Route path="/about">
-              <main>About</main>
-            </Route>
-            <Route path="/">
-              <main>Home</main>
-            </Route>
-          </Switch>
-        </header>
-      </div>
-    </BrowserRouter>
+    <div className={styles.appContainer}>
+      <Form onSubmit={handleSubmit} />
+      <ul>
+        {cards.map((entry) => {
+          return (
+            <Card
+              title={entry.title}
+              description={entry.description}
+              isWatched={entry.isWatched}
+              priority={entry.priority}
+            />
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
